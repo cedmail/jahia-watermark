@@ -1,0 +1,26 @@
+###############################################################################
+package org.jahia.modules.atmosphere.rules
+
+#list any import classes here.
+import org.jahia.services.content.rules.*
+import org.jahia.modules.watermark.*
+import org.slf4j.Logger
+
+expander rules.dsl
+
+#declare any global variables here
+global User user
+global Service service
+global Logger logger
+global WatermarkRuleService watermarkService
+###############################################################################
+
+rule "Image update"
+    salience 40
+    when
+        A file content has been modified
+             - the mimetype matches image/.*
+    then
+        Watermark file with site watermark image "watermark.png" with a 20% opacity in area "SouthEast"
+        Log "Image watermarked " + node.getPath()
+end

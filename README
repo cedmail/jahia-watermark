@@ -1,0 +1,7 @@
+Rules for watermarking files automatically on upload
+
+Your Jahia need to use ImageMagickImageService to make this work (see your applicationcontext-services.xml)
+
+
+
+This file was modified by IntelliJ IDEA 10.5.1 for binding GitHub repository
