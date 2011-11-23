@@ -54,11 +54,11 @@ import javax.jcr.RepositoryException;
 import java.io.*;
 
 /**
- * Created by IntelliJ IDEA.
+ * This class use IM4J API ti call ImageMagick tools to compose an image by blending them together.
  *
- * @author : rincevent
- * @since : JAHIA 6.1
- *        Created : 11/23/11
+ * @author : Cédric mailleux
+ * @since : JAHIA 6.6
+ * Created : 11/23/11
  */
 public class WatermarkRuleService implements InitializingBean {
     private transient static Logger logger = Logger.getLogger(WatermarkRuleService.class);
@@ -66,7 +66,14 @@ public class WatermarkRuleService implements InitializingBean {
     private JCRTemplate jcrTemplate;
     private boolean activated;
 
-
+    /**
+     * This method blend two image together.
+     * @param nodeFact The source image
+     * @param imageName The watermark image
+     * @param blendValue The blending value (0-100) define the opacity of the watermark image compared to the original image.
+     * @param gravityValue Where to place the watermark value are (NorthWest,North,NorthEast,East,SouthEast,South,SouthWest,West,Center)
+     * @param drools current set of facts to be handled by drools.
+     */
     public void watermark(final AddedNodeFact nodeFact, final String imageName, int blendValue, String gravityValue,
                           final KnowledgeHelper drools) {
         if (activated) {
